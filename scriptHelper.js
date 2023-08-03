@@ -59,27 +59,33 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
     if (fuelLevel < 10000) {
         list.style.visibility = "visible";
         document.getElementById("fuelStatus").innerHTML = "Not enough fuel for the journey";
-        document.getElementById("cargoStatus").innerHTML = "Cargo mass too low for launch";
+        //document.getElementById("cargoStatus").innerHTML = "Cargo mass too low for launch";
         document.getElementById("launchStatus").innerHTML = "Shuttle not ready for launch";
         let launchStatus = document.querySelector("#launchStatus");
         launchStatus.style.color = "rgb(199, 37, 78)";
+    } else {
+        document.getElementById("fuelStatus").innerHTML = "Fuel level high enough for launch";
     }
     if (cargoLevel > 10000) {
         list.style.visibility = "visible";
         document.getElementById("cargoStatus").innerHTML = "There is too much mass for shuttle to take off";
-        document.getElementById("cargoStatus").innerHTML = "Cargo mass too heavy for launch";
+       // document.getElementById("cargoStatus").innerHTML = "Cargo mass too heavy for launch";
         document.getElementById("launchStatus").innerHTML = "Shuttle not ready for launch";
         let launchStatus = document.querySelector("#launchStatus");
         launchStatus.style.color = "rgb(199, 37, 78)";
+    } else {
+        document.getElementById("cargoStatus").innerHTML = "Cargo mass low enough for launch";
     }
     if (cargoLevel > 10000 && fuelLevel < 10000) {
-        document.getElementById("fuelStatus").innerHTML = "Fuel level too high for launch";
+        list.style.visibility = "visible";
+        document.getElementById("fuelStatus").innerHTML = "Not enough fuel for the journey";
         document.getElementById("cargoStatus").innerHTML = "Cargo mass too heavy for launch";
         document.getElementById("launchStatus").innerHTML = "Shuttle is not ready for launch";
         let launchStatus = document.querySelector("#launchStatus");
         launchStatus.style.color = "rgb(199, 37, 78)";
     }
     if (cargoLevel <= 10000 && fuelLevel >= 10000) {
+        list.style.visibility = "visible";
         document.getElementById("fuelStatus").innerHTML = "Fuel level high enough for launch";
         document.getElementById("cargoStatus").innerHTML = "Cargo mass low enough for launch";
         document.getElementById("launchStatus").innerHTML = "Shuttle is ready for launch";

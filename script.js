@@ -1,12 +1,12 @@
 // Write your JavaScript code here!
 
-const { pickPlanet, addDestinationInfo, formSubmission } = require("./scriptHelper");
+//const { pickPlanet, addDestinationInfo, formSubmission, myFetch } = require("./scriptHelper");
 
 window.addEventListener("load", function() {
 
-   let listedPlanets = myFetch();
+   let listedPlanets;
    // Set listedPlanetsResponse equal to the value returned by calling myFetch()
-   let listedPlanetsResponse = result;
+   let listedPlanetsResponse = myFetch();
    listedPlanetsResponse.then(function (result) {
        listedPlanets = result;
        console.log(listedPlanets);
@@ -15,8 +15,9 @@ window.addEventListener("load", function() {
        // Below this comment call the appropriate helper functions to pick a planet fom the list of planets and add that information to your destination.
        let selectedPlanet = pickPlanet(listedPlanets);
        console.log(selectedPlanet);
-       addDestinationInfo(window.document, selectedPlanet.name, selectedPlanet.diameter, selectedPlanet.star, selectedPlanet.distance, selectedPlanet.image, selectedPlanet.moons);
+       addDestinationInfo(window.document, selectedPlanet.name, selectedPlanet.diameter, selectedPlanet.star, selectedPlanet.distance, selectedPlanet.moons, selectedPlanet.image);
    });
+   let faultyItems = document.querySelector("#faultyItems");
    faultyItems.style.visibility = "hidden";
 
    let form = document.querySelector("form");
@@ -25,10 +26,9 @@ window.addEventListener("load", function() {
    let copilotNameInput = document.querySelector("input[name=copilotName]").value;
    let fuelLevelInput = document.querySelector("input[name=fuelLevel]").value;
    let cargoMassInput = document.querySelector("input[name=cargoMass]").value;
-   let cargoMassInput = document.querySelector("input[name=cargoMass]").value;
    let faultyItems = document.querySelector("#faultyItems");
    event.preventDefault();
    formSubmission(window.document, faultyItems, pilotNameInput, copilotNameInput, fuelLevelInput, cargoMassInput);
    
-   ));
+});
 });
